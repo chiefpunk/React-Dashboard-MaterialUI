@@ -1,44 +1,19 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import { Route, Switch, Link } from "react-router-dom";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
-
-export default function App() {
-  const classes = useStyles();
-
+import { Route, Switch, Link, Redirect } from "react-router-dom";
+import StartPage from "./StartPage";
+import Dashboard from "./pages/Dashboard";
+const App = () => {
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            RisingStar Projects
-          </Typography>
-          <Link to="/login">
-            <Button color="inherit">Login</Button>
-          </Link>
-          <Button color="inherit">SignUp</Button>
-        </Toolbar>
-      </AppBar>
+    <div>
       <Switch>
-        <Route path="/login" component={Login}></Route>
-        <Route path="/" component={Home}></Route>
+        <Route path="/home" component={StartPage}></Route>
+        <Route path="/" exact>
+          <Redirect to="/home"></Redirect>
+        </Route>
+        <Route path="/dashboard" component={Dashboard}></Route>
       </Switch>
     </div>
   );
-}
+};
+
+export default App;
