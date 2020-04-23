@@ -76,6 +76,7 @@ const Login = ({ isLoggedIn, isFailed, login, ...rest }) => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
+        <h2>username:admin, password:password</h2>
         <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
